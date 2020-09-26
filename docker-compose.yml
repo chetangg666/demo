@@ -1,0 +1,39 @@
+version: "3.4"
+ 
+services:
+
+  app-db:
+    container_name: app-db
+    image: "mysql:5.7.24"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "db"
+  app-ggo:
+    restart: always
+    environment:
+      WAIT_HOSTS: app-db:3306
+    build:
+      context: "."
+      dockerfile: "./Dockerfile"
+    ports:
+      - "9092:9090"
+    depends_on:
+      - app-db
+      - rabbit1
+    links:
+      - "app-db:database"
+  rabbit1:
+    image: "rabbitmq:3-management"
+    hostname: "rabbit1"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq1"
