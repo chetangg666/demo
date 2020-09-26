@@ -1,9 +1,9 @@
-package demo
+package app
 
 import (
 	"context"
 	"database/sql"
-	"demo/rabbitmqq"
+	"app/rabbitmqq"
 	"encoding/json"
 	"errors"
 	"fmt"

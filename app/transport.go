@@ -1,9 +1,9 @@
-package demo
+package app
 
 import (
 	"context"
 	"encoding/json"
-	"demo/metrics"
+	"app/metrics"
 	"net/http"
 )
 

@@ -1,8 +1,8 @@
-package demo
+package app
 
 import (
+	"app/metrics"
 	"context"
-	"demo/metrics"
 
 	"github.com/go-kit/kit/endpoint"
 )

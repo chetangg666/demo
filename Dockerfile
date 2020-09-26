@@ -15,7 +15,7 @@ RUN mkdir /app
 
 ADD . /app
 
-WORKDIR /app/app-go
+WORKDIR /app/app
 
 # Fetch dependencies.
 RUN go mod download
@@ -25,4 +25,4 @@ RUN go mod download
 RUN go build -o main ./cmd
 
 # our newly created binary executable
-CMD ["/app/demo/main"]
+CMD ["/app/app/main"]

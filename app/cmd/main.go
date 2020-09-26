@@ -2,10 +2,10 @@ package main
 
 import (
 	"context"
-	"demo"
-	"demo/db"
-	"demo/metrics"
-	"demo/rabbitmqq"
+	"app"
+	"app/db"
+	"app/metrics"
+	"app/rabbitmqq"
 	"flag"
 	"fmt"
 	"log"
@@ -30,7 +30,7 @@ func main() {
 	ch, q, conn := rabbitmqq.Config()
 	defer conn.Close()
 	// our  service
-	srv := demo.NewService(db, ch, q)
+	srv := app.NewService(db, ch, q)
 	errChan := make(chan error)
 
 	go func() {
@@ -42,16 +42,16 @@ func main() {
 	r.Handle("/metrics", promhttp.Handler())
 	prometheus.MustRegister(metrics.RequestsToIndex)
 	// mapping endpoints
-	endpoints := demo.Endpoints{
-		GetEndpoint:    demo.MakeGetEndpoint(srv),
-		CreateEndpoint: demo.MakeCreateEndpoint(srv),
-		DeleteEndpoint: demo.MakeDeleteEndpoint(srv),
+	endpoints := app.Endpoints{
+		GetEndpoint:    app.MakeGetEndpoint(srv),
+		CreateEndpoint: app.MakeCreateEndpoint(srv),
+		DeleteEndpoint: app.MakeDeleteEndpoint(srv),
 	}
 
 	// HTTP transport
 	go func() {
-		log.Println("demo is listening on port:", *httpAddr)
-		handler := demo.NewHTTPServer(ctx, endpoints, r)
+		log.Println("app is listening on port:", *httpAddr)
+		handler := app.NewHTTPServer(ctx, endpoints, r)
 		errChan <- http.ListenAndServe(*httpAddr, handler)
 	}()
 
