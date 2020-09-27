@@ -11,11 +11,10 @@ The REST API to the example app is described below.
 ### Request
 
 `POST /operation`
-
-   {
-"LastName":"darshan",
-"FirstName":"kumar"
-}
+  {
+    "LastName":"darshan",
+    "FirstName":"kumar"
+  }
 
 ### Response
 
@@ -24,17 +23,16 @@ The REST API to the example app is described below.
     Status: 200 Created
     Connection: close
     Content-Type: application/json
-   {"ID":1,"LastName":"darshan","FirstName":"kumar"}
+    {"ID":1,"LastName":"darshan","FirstName":"kumar"}
 
 ## Delete a Record
 
 ### Request
 
 `DELETE /operation`
-
- {
-"ID":1
-}
+  {
+   "ID":1
+ }
 
 ### Response
 
@@ -43,7 +41,7 @@ The REST API to the example app is described below.
     Status: 200 No Content
     Connection: close
     {
-    "ID": 1
+     "ID": 1
     }
 
 
@@ -54,8 +52,8 @@ The REST API to the example app is described below.
 `DELETE /operation`
 
     {
-    "ID":1
-   }
+     "ID":1
+    }
 
 ### Response
 
@@ -67,8 +65,8 @@ The REST API to the example app is described below.
     Content-Length: 35
 
     {
-    "ID": 1,
-    "err": "Not exist in db to delete"
+     "ID": 1,
+     "err": "Not exist in db to delete"
     }
 ## Metrics 
 
