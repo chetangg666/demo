@@ -1,7 +1,7 @@
 # Demo
 #To run the program navigate to demo directory and run below command
 # 
-docker-compose up --build
+docker-compose up --build -d
 # REST API
 
 The REST API to the example app is described below.
