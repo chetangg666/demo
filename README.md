@@ -2,6 +2,8 @@
 #To run the program navigate to demo directory and run below command
 # 
 docker-compose up --build -d
+# The port number to bind the server to :9092
+http://hostname:9092/operation
 # REST API
 
 The REST API to the example app is described below.
