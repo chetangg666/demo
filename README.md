@@ -1,6 +1,8 @@
 # Demo
 #To run the program navigate to demo directory and run below command
-# 
+#
+docker build -t app-ggo .
+
 docker-compose up --build -d
 # The port number to bind the server to :9092
 http://hostname:9092/operation
