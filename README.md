@@ -1,8 +1,30 @@
 # Demo
-#To run the program navigate to demo directory and run below command
-#
+
+## Kubernetes & Helm
+
+This project is containerized using Docker and deployed on Kubernetes using Helm.
+
+### Deploy
+To run the program navigate to demo directory and run below command
+
+
+`docker build -t demo-go-app .`
+
+
+`helm install demo helm/demo`
+
+### Check
+
+
+`kubectl get pods` 
+
+`kubectl get svc`
+
+### Alternative to run by using docker compose 
+
 
 docker-compose up --build -d
+
 # The port number to bind the server to :9092
 http://hostname:9092/operation
 # REST API
