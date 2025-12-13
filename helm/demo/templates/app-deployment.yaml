@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-ggo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-ggo
+  template:
+    metadata:
+      labels:
+        app: app-ggo
+    spec:
+      containers:
+        - name: app
+          image: {{ .Values.app.image }}
+          ports:
+            - containerPort: {{ .Values.app.port }}
+          env:
+            - name: WAIT_HOSTS
+              value: app-db:3306
