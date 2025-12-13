@@ -93,8 +93,10 @@ The REST API to the example app is described below.
      "ID": 1,
      "err": "Not exist in db to delete"
     }
-## Metrics 
+## Prometheus  Metrics 
 
 ### Request
 
 ` /metrics`
+
+
